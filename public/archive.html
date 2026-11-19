@@ -1,1 +1,43 @@
-yeah this one is going to be insane!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
+    <meta name="description" content="bloho north archives - ayush's visual archive">
+    <title>bloho north archives</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="archive.css">
+    <script defer src="archive-images.js"></script>
+    <script defer src="archive.js"></script>
+</head>
+<body class="archive-page">
+    <main class="archive-main">
+        <header class="archive-header">
+            <a class="archive-brand" href="index.html" aria-label="bloho north archives">
+                <img class="archive-logo" src="utilities/bloho-north-logo.svg" alt="Bloho North Archives" width="725" height="185" fetchpriority="high">
+                <video class="archive-animation" muted loop playsinline preload="none" aria-hidden="true"></video>
+            </a>
+        </header>
+        <section class="archive-gallery" aria-label="Archive images">
+            <div class="archive-track"></div>
+            <div class="archive-sentinel" aria-hidden="true"></div>
+            <p class="archive-empty" hidden>no archive images yet lmao</p>
+        </section>
+    <svg class="archive-filter" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="archive-refraction" x="-10%" y="-50%" width="120%" height="200%" color-interpolation-filters="sRGB">
+          <!-- Vary across the glass only, giving each vertical band a different width. -->
+          <feTurbulence type="fractalNoise" baseFrequency="0.045 0" numOctaves="2" seed="17" result="bands"/>
+          <feGaussianBlur in="bands" stdDeviation="0.8 0" result="soft-bands"/>
+          <!-- Neutral green keeps the refraction aligned vertically. -->
+          <feColorMatrix in="soft-bands" type="matrix" values="1 0 0 0 0  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 1" result="refraction-map"/>
+          <feDisplacementMap in="SourceGraphic" in2="refraction-map" scale="12" xChannelSelector="R" yChannelSelector="G" result="refracted"/>
+          <feGaussianBlur in="refracted" stdDeviation="0.35 4"/>
+        </filter>
+      </defs>
+    </svg>
+    <div class="archive-glass" aria-hidden="true"></div>
+    <img class="archive-ray" src="utilities/archive-ray.png" alt="" width="1280" height="36">
+    </main>
+</body>
+</html>
